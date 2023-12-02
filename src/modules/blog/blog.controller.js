@@ -5,6 +5,7 @@ const {
   createBlogSchema,
   updateBlogSchema,
 } = require("../../common/validations/blog.validation");
+const { deleteFile } = require("../../common/utils/functions");
 
 class BlogController {
   #service;
@@ -56,19 +57,20 @@ class BlogController {
     try {
       const { title, description, category } =
         await updateBlogSchema.validateAsync(req.body);
+      const cover = req.file.filename;
       const { slug } = req.params;
       const authorId = req.user._id;
 
       await this.#service.update(
-        { title, description, category },
+        { title, description, category, cover },
         slug,
         authorId
       );
       return res.status(200).json({
         message: BlogMessage.BlogUpdateSuccessfully,
-        blog,
       });
     } catch (error) {
+      deleteFile(req.file.filename);
       next(error);
     }
   }

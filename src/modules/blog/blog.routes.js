@@ -7,7 +7,7 @@ const router = Router();
 router.post(
   "/create",
   Authorization,
-  upload.single("avatar"),
+  upload.single("cover"),
   blogController.create
 );
 router.put("/update/:slug", Authorization, blogController.update);
