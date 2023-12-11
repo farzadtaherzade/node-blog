@@ -5,7 +5,6 @@ const NotFoundHandler = require("./src/common/exception/not-found.handler");
 const AllExceptionHandler = require("./src/common/exception/all-exception.handler");
 const morgan = require("morgan");
 const cors = require("cors");
-const path = require("path");
 
 dotenv.config();
 

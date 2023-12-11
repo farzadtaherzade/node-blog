@@ -14,7 +14,7 @@ async function sendEmail(code, reciver) {
     from: '"Me" <johnnycash@protonmail.com>',
     to: reciver,
     subject: "Hello!",
-    text: `<!DOCTYPE html>
+    html: `<!DOCTYPE html>
     <html lang="en">
     <head>
         <meta charset="UTF-8">
